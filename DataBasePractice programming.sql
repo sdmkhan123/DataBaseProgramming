@@ -93,3 +93,37 @@ from EmpCompany
 select COUNT(CompRevenue)
 from EmpCompany
 --===========================================================
+--Ceates Customers Table
+--===========================================================
+create table Customers(
+CustomerID int identity(1,1) Primary Key,
+CustomerName varchar(255) not null,
+CompId int not null,
+City varchar(255) not null,
+PostalCode int not null
+)
+--Inserting data into EmpCompany Table
+insert into Customers values
+('Saddam', 4, 'UP', 10),
+('Hanif', 3, 'Mumbai', 20),
+('Rani', 4, 'Jharkhand', 30),
+('Kalpesh', 2, 'Mumbai', 30),
+('Sameeksha', 2, 'Pune', 40),
+('Deepti', 3, 'Asam', 50),
+('AhshanSir', 1, 'Mumbai', 60),
+('GunjanSir', 1, 'UP', 10)
+
+select * from Customers
+--GROUP BY Statement
+select count(CustomerID), City
+from Customers
+Group By City
+
+--HAVING Clause
+select count(CustomerID), City
+from Customers
+Group By City
+Having count(CustomerID)>1
+order by count(CustomerID)
+
+--
