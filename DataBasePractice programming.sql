@@ -126,4 +126,26 @@ Group By City
 Having count(CustomerID)>1
 order by count(CustomerID)
 
---
+--ANY and ALL opertor
+select CustomerName
+from Customers
+where CompId = ANY
+	(select CompId
+	from EmpCompany
+	where PostalCode = 10
+	)
+
+select CustomerName
+from Customers
+where CompId = All
+	(select CompId
+	from EmpCompany
+	where CompId = 2
+	)
+--Add Unique key
+Alter Table Customers
+Add Unique (CustomerName)
+
+--create a FOREIGN KEY constraint
+Alter Table Customers
+Add Foreign Key (CompId) references EmpCompany(CompId)
